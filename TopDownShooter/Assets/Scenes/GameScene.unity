@@ -432,6 +432,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <MovementData>k__BackingField: {fileID: 11400000, guid: 27416b56420ad0c46901caae7698d76c, type: 2}
   currentVelocity: 3
+  <OnVelocityChange>k__BackingField:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1171722645}
+        m_TargetAssemblyTypeName: TopDownShooter.AgentAnimations, Assembly-CSharp
+        m_MethodName: AnimatePlayer
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &490965883
 GameObject:
   m_ObjectHideFlags: 0
@@ -509,6 +524,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1171722643}
   - component: {fileID: 1171722642}
+  - component: {fileID: 1171722644}
+  - component: {fileID: 1171722645}
   m_Layer: 0
   m_Name: PlayerSprite
   m_TagString: Untagged
@@ -583,6 +600,39 @@ Transform:
   m_Children: []
   m_Father: {fileID: 456024261}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &1171722644
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1171722641}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9d33f7740d75d5e478579cacec08ea6e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1171722645
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1171722641}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d46d9c29a5052b43ae9c413d5639709, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1228628678
 GameObject:
   m_ObjectHideFlags: 0

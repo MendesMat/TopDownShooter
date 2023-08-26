@@ -1,19 +1,30 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace TopDownShooter
 {
     [RequireComponent(typeof(Rigidbody2D))]
     public class AgentMovement : MonoBehaviour
     {
-        protected Rigidbody2D rb2d; // inicializado no inspector
+        #region Variaveis
+        // Componentes
+        protected Rigidbody2D rb2d;
 
         [field: SerializeField]
         public MovementDataSO MovementData { get; set; }
 
+        // Atributos
         [SerializeField]
         protected float currentVelocity = 3f;
         protected Vector2 movementDirection;
 
+        // Eventos
+        [field: SerializeField]
+        public UnityEvent<float> OnVelocityChange { get; set; }
+        #endregion
+
+        #region Metodos
+        // Metodos Unity
         private void Awake()
         {
             rb2d = GetComponent<Rigidbody2D>();
@@ -21,9 +32,11 @@ namespace TopDownShooter
 
         private void FixedUpdate()
         {
-            rb2d.velocity = currentVelocity * movementDirection.normalized;
+            OnVelocityChange?.Invoke(currentVelocity);
+            rb2d.velocity = currentVelocity * movementDirection;
         }
 
+        // Metodos Gerais
         public void MoveAgent(Vector2 movementInput)
         {
             if(movementInput.magnitude > 0)
@@ -48,5 +61,6 @@ namespace TopDownShooter
 
             return Mathf.Clamp(currentVelocity, 0, MovementData.maxSpeed);
         }
+        #endregion
     }
 }
