@@ -14,8 +14,7 @@ namespace TopDownShooter
         public MovementDataSO MovementData { get; set; }
 
         // Atributos
-        [SerializeField]
-        protected float currentVelocity = 3f;
+        protected float currentVelocity;
         protected Vector2 movementDirection;
 
         // Eventos
@@ -23,7 +22,7 @@ namespace TopDownShooter
         public UnityEvent<float> OnVelocityChange { get; set; }
         #endregion
 
-        #region Metodos
+        #region Funções Unity
         // Metodos Unity
         private void Awake()
         {
@@ -35,8 +34,10 @@ namespace TopDownShooter
             OnVelocityChange?.Invoke(currentVelocity);
             rb2d.velocity = currentVelocity * movementDirection;
         }
+        #endregion
 
-        // Metodos Gerais
+        #region Métodos Gerais
+        // Invocado pelo Input de Movimentação
         public void MoveAgent(Vector2 movementInput)
         {
             if(movementInput.magnitude > 0)

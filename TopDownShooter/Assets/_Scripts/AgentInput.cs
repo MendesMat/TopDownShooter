@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -34,7 +33,7 @@ namespace TopDownShooter
         // Metodos Gerais
         private void GetPointerInput()
         {
-            // Garantindo que a profundidade (eixo z), seja referente à main camera
+            // Garantindo que a profundidade (eixo z) seja referente à main camera, ou seja, em 2D
             Vector3 mousePosition = Input.mousePosition;
             mousePosition.z = mainCamera.nearClipPlane;
 
