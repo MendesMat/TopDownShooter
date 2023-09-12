@@ -5,13 +5,14 @@ namespace TopDownShooter
     [RequireComponent(typeof(SpriteRenderer))]
     public class AgentRenderer : MonoBehaviour
     {
-        protected SpriteRenderer spriteRenderer;
+        private SpriteRenderer spriteRenderer;
 
         private void Awake()
         {
             spriteRenderer = GetComponent<SpriteRenderer>();
         }
 
+        // Sendo chamado pelo Input no Editor
         public void FaceDirection(Vector2 pointerInput)
         {
             var direction = (Vector3)pointerInput - transform.position; // Input do mouse, naturalmente, é um Vector3

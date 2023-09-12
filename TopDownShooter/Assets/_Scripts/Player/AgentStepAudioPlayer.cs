@@ -7,15 +7,15 @@ namespace TopDownShooter
     {
         #region Variaveis
         // Componentes
-        protected AudioSource audioSource;
+        private AudioSource audioSource;
 
         // Atributos
         [SerializeField]
-        protected float pitchRandomness = 0.05f;
-        protected float basePitch;
+        private float pitchRandomness = 0.05f;
+        private float basePitch;
 
         [SerializeField]
-        protected AudioClip stepClip;
+        private AudioClip stepClip;
         #endregion
 
         #region Metodos
@@ -30,20 +30,21 @@ namespace TopDownShooter
             basePitch = audioSource.pitch;   
         }
         
-        protected void PlayClipWithVariablePitch(AudioClip clip)
+        private void PlayClipWithVariablePitch(AudioClip clip)
         {
             var randomPitch = Random.Range(-pitchRandomness, pitchRandomness);
             audioSource.pitch = basePitch + randomPitch;
             PlayClip(clip);
         }
 
-        protected void PlayClip(AudioClip clip)
+        private void PlayClip(AudioClip clip)
         {
             audioSource.Stop();
             audioSource.clip = clip;
             audioSource.Play();
         }
 
+        // Sendo chamado no primeiro frame da animação de Walk do player
         public void PlayStepSound()
         {
             PlayClipWithVariablePitch(stepClip);

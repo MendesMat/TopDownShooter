@@ -9,12 +9,21 @@ namespace TopDownShooter
         // Componentes
         private Camera mainCamera;
 
+        // Atributos
+        private bool fireButtonDown = false;
+
         // Eventos
         [field: SerializeField]
-        public UnityEvent<Vector2> OnMovementKeyPressed { get; set; }
+        private UnityEvent<Vector2> OnMovementKeyPressed { get; set; }
 
         [field: SerializeField]
-        public UnityEvent<Vector2> OnPointerPositionChange { get; set; }
+        private UnityEvent<Vector2> OnPointerPositionChange { get; set; }
+
+        [field: SerializeField]
+        private UnityEvent OnFireButtonPressed { get; set; }
+
+        [field: SerializeField]
+        private UnityEvent OnFireButtonReleased { get; set; }
         #endregion
 
         #region Metodos
@@ -28,6 +37,27 @@ namespace TopDownShooter
         {
             GetMovementInput();
             GetPointerInput();
+            GetFireInput();
+        }
+
+        private void GetFireInput()
+        {
+            if (Input.GetAxisRaw("Fire1") > 0)
+            {
+                if (!fireButtonDown)
+                {
+                    fireButtonDown = true;
+                    OnFireButtonPressed?.Invoke();
+                }    
+            }
+            else
+            {
+                if (fireButtonDown)
+                {
+                    fireButtonDown = false;
+                    OnFireButtonReleased?.Invoke();
+                }       
+            }
         }
 
         // Metodos Gerais

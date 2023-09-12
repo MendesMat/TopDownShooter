@@ -8,18 +8,18 @@ namespace TopDownShooter
     {
         #region Variaveis
         // Componentes
-        protected Rigidbody2D rb2d;
+        private Rigidbody2D rb2d;
 
         [field: SerializeField]
-        public MovementDataSO MovementData { get; set; }
+        private MovementDataSO MovementData { get; set; }
 
         // Atributos
-        protected float currentVelocity;
-        protected Vector2 movementDirection;
+        private float currentVelocity;
+        private Vector2 movementDirection;
 
         // Eventos
         [field: SerializeField]
-        public UnityEvent<float> OnVelocityChange { get; set; }
+        private UnityEvent<float> OnVelocityChange { get; set; }
         #endregion
 
         #region Funções Unity
@@ -37,14 +37,16 @@ namespace TopDownShooter
         #endregion
 
         #region Métodos Gerais
-        // Invocado pelo Input de Movimentação
+        // Invocado pelo Input Action Asset
         public void MoveAgent(Vector2 movementInput)
         {
+            // Recebe a direção
             if(movementInput.magnitude > 0)
             {
                 movementDirection = movementInput.normalized;
             }
 
+            // Recebe a velocidade
             currentVelocity = CalculateSpeed(movementInput);
         }
 

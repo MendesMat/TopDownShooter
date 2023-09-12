@@ -5,19 +5,19 @@ namespace TopDownShooter
     [RequireComponent(typeof(Animator))]
     public class AgentAnimations : MonoBehaviour
     {
-        protected Animator agentAnimator;
+        private Animator agentAnimator;
 
         private void Awake()
         {
             agentAnimator = GetComponent<Animator>();
         }
 
-        public void SetWalkAnimation(bool val)
+        private void SetWalkAnimation(bool val)
         {
             agentAnimator.SetBool("Walk", val);
         }
 
-        public void AnimatePlayer(float velocity)
+        private void AnimatePlayer(float velocity)
         {
             SetWalkAnimation(velocity > 0);
         }
