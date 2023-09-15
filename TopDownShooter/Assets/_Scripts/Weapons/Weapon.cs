@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
+using Random = UnityEngine.Random;
 
 namespace TopDownShooter
 {
@@ -8,7 +10,7 @@ namespace TopDownShooter
     {
         #region Variáveis
         // Componentes
-        [SerializeField] private WeaponDataSO weaponDataSO;
+        [SerializeField] private WeaponDataSO weaponData;
         [SerializeField] private GameObject muzzle;
 
         // Atributos
@@ -21,7 +23,7 @@ namespace TopDownShooter
         [field: SerializeField] private UnityEvent OnShootNoAmmo { get; set; }
 
         // Propriedades
-        private bool AmmoFull { get => Ammo >= weaponDataSO.AmmoCapacity; }
+        private bool AmmoFull { get => Ammo >= weaponData.AmmoCapacity; }
 
         public int Ammo
         {
@@ -29,7 +31,7 @@ namespace TopDownShooter
 
             set
             {
-                ammo = Mathf.Clamp(value, 0, weaponDataSO.AmmoCapacity);
+                ammo = Mathf.Clamp(value, 0, weaponData.AmmoCapacity);
             }
         }
         #endregion
@@ -37,7 +39,7 @@ namespace TopDownShooter
         #region Funções Unity
         private void Start()
         {
-            Ammo = weaponDataSO.AmmoCapacity;
+            Ammo = weaponData.AmmoCapacity;
         }
 
         private void Update()
@@ -57,7 +59,7 @@ namespace TopDownShooter
                     Ammo--;
                     OnShoot?.Invoke();
 
-                    for(int i = 0; i < weaponDataSO.GetBulletCount(); i++)
+                    for(int i = 0; i < weaponData.GetBulletCount(); i++)
                     {
                         ShootBullet();
                     }
@@ -76,7 +78,7 @@ namespace TopDownShooter
         private void FinishShooting()
         {
             StartCoroutine(DelayNextShootCoroutine());
-            if (!weaponDataSO.AutomaticFire)
+            if (!weaponData.AutomaticFire)
             {
                 isShooting = false;
             }
@@ -85,13 +87,26 @@ namespace TopDownShooter
         private IEnumerator DelayNextShootCoroutine()
         {
             reloadCoroutine = true;
-            yield return new WaitForSeconds(weaponDataSO.WeaponDelay);
+            yield return new WaitForSeconds(weaponData.WeaponDelay);
             reloadCoroutine = false;
         }
 
         private void ShootBullet()
         {
-            Debug.Log("Shooting!");
+            SpawnBullet(muzzle.transform.position, CalculateBulletAngle(muzzle));
+        }
+
+        private void SpawnBullet(Vector3 position, Quaternion angle)
+        {
+            var bulletPrefab = Instantiate(weaponData.BulletData.BulletPrefab, position, angle);
+            bulletPrefab.GetComponent<AbstractBullet>().BulletData = weaponData.BulletData;
+        }
+
+        private Quaternion CalculateBulletAngle(GameObject muzzle)
+        {
+            float spread = Random.Range(-weaponData.spreadAngle, weaponData.spreadAngle);
+            Quaternion bulletSpread = Quaternion.Euler(new Vector3(0, 0, spread));
+            return muzzle.transform.rotation * bulletSpread;
         }
 
         public void TryShooting()
