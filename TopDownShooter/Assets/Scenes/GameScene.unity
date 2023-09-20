@@ -768,7 +768,123 @@ Transform:
   - {fileID: 784822059}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!43 &1690174436
+--- !u!1 &1813358565 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1880598522264525989, guid: 2e3a1a61047ac774bb4e785f7a198cfa, type: 3}
+  m_PrefabInstance: {fileID: 8390112671348699135}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1813358570
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1813358565}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5af97c6341576847856ecff6f1ddc04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pitchRandomness: 0.05
+  shootBulletClip: {fileID: 8300000, guid: 1b3aa6eb9f9d9ee4d808a753cc86a51f, type: 3}
+  outOfBulletsClip: {fileID: 8300000, guid: 56c260531cb172d40b5f6ed2f0f3a601, type: 3}
+--- !u!82 &1813358571
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1813358565}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 0.5
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!43 &2010033690
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1064,10 +1180,70 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 4397604721803396110, guid: 2e3a1a61047ac774bb4e785f7a198cfa, type: 3}
+      propertyPath: <OnShoot>k__BackingField.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4397604721803396110, guid: 2e3a1a61047ac774bb4e785f7a198cfa, type: 3}
+      propertyPath: <OnShootNoAmmo>k__BackingField.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4397604721803396110, guid: 2e3a1a61047ac774bb4e785f7a198cfa, type: 3}
+      propertyPath: <OnShoot>k__BackingField.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4397604721803396110, guid: 2e3a1a61047ac774bb4e785f7a198cfa, type: 3}
+      propertyPath: <OnShoot>k__BackingField.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1813358570}
+    - target: {fileID: 4397604721803396110, guid: 2e3a1a61047ac774bb4e785f7a198cfa, type: 3}
+      propertyPath: <OnShoot>k__BackingField.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4397604721803396110, guid: 2e3a1a61047ac774bb4e785f7a198cfa, type: 3}
+      propertyPath: <OnShoot>k__BackingField.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PlayShootSound
+      objectReference: {fileID: 0}
+    - target: {fileID: 4397604721803396110, guid: 2e3a1a61047ac774bb4e785f7a198cfa, type: 3}
+      propertyPath: <OnShootNoAmmo>k__BackingField.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4397604721803396110, guid: 2e3a1a61047ac774bb4e785f7a198cfa, type: 3}
+      propertyPath: <OnShootNoAmmo>k__BackingField.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1813358570}
+    - target: {fileID: 4397604721803396110, guid: 2e3a1a61047ac774bb4e785f7a198cfa, type: 3}
+      propertyPath: <OnShootNoAmmo>k__BackingField.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4397604721803396110, guid: 2e3a1a61047ac774bb4e785f7a198cfa, type: 3}
+      propertyPath: <OnShootNoAmmo>k__BackingField.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PlayOutOfBulletsSound
+      objectReference: {fileID: 0}
+    - target: {fileID: 4397604721803396110, guid: 2e3a1a61047ac774bb4e785f7a198cfa, type: 3}
+      propertyPath: <OnShoot>k__BackingField.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: TopDownShooter.WeaponAudio, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4397604721803396110, guid: 2e3a1a61047ac774bb4e785f7a198cfa, type: 3}
+      propertyPath: <OnShootNoAmmo>k__BackingField.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: TopDownShooter.WeaponAudio, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4397604721803396110, guid: 2e3a1a61047ac774bb4e785f7a198cfa, type: 3}
+      propertyPath: <OnShoot>k__BackingField.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 4397604721803396110, guid: 2e3a1a61047ac774bb4e785f7a198cfa, type: 3}
+      propertyPath: <OnShootNoAmmo>k__BackingField.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 4685603585952490421, guid: 2e3a1a61047ac774bb4e785f7a198cfa, type: 3}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: 1690174436}
+      objectReference: {fileID: 2010033690}
+    - target: {fileID: 4685603585952490421, guid: 2e3a1a61047ac774bb4e785f7a198cfa, type: 3}
+      propertyPath: m_InstanceId
+      value: -1384
+      objectReference: {fileID: 0}
     - target: {fileID: 6981214929555278793, guid: 2e3a1a61047ac774bb4e785f7a198cfa, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1111,7 +1287,13 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1880598522264525989, guid: 2e3a1a61047ac774bb4e785f7a198cfa, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1813358571}
+    - targetCorrespondingSourceObject: {fileID: 1880598522264525989, guid: 2e3a1a61047ac774bb4e785f7a198cfa, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1813358570}
   m_SourcePrefab: {fileID: 100100000, guid: 2e3a1a61047ac774bb4e785f7a198cfa, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
